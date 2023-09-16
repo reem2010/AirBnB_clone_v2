@@ -132,7 +132,7 @@ class HBNBCommand(cmd.Cmd):
         param = eval("{" + param + "}")
         for key, value in param.items():
             if type(value) == str:
-                value.replace("\"", "").replace("_", " ")
+                value = value.replace("\"", "").replace("_", " ")
             setattr(new_instance, key, value)
         storage.save()
         print(new_instance.id)
