@@ -134,8 +134,7 @@ class HBNBCommand(cmd.Cmd):
             if type(value) == str:
                 value = value.replace("\"", "").replace("_", " ")
             setattr(new_instance, key, value)
-        if type(storage).__name__ == "DBStorage":
-            storage.new(new_instance)
+        storage.new(new_instance)
         storage.save()
         print(new_instance.id)
 
