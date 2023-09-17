@@ -134,7 +134,8 @@ class HBNBCommand(cmd.Cmd):
             if type(value) == str:
                 value = value.replace("\"", "").replace("_", " ")
             setattr(new_instance, key, value)
-        storage.new(new_instance)
+        if type(storage).__name__ == "DBStorage":
+            storage.new(new_instance)
         storage.save()
         print(new_instance.id)
 
@@ -199,7 +200,7 @@ class HBNBCommand(cmd.Cmd):
         key = c_name + "." + c_id
 
         try:
-            del(storage.all()[key])
+            del (storage.all()[key])
             storage.save()
         except KeyError:
             print("** no instance found **")
