@@ -4,6 +4,7 @@ import os
 from sqlalchemy import create_engine, MetaData
 from models.state import State
 from models.city import City
+from models.user import User
 from models.base_model import Base
 from sqlalchemy.orm import sessionmaker, scoped_session
 
@@ -30,7 +31,7 @@ class DBStorage:
 
     def all(self, cls=None):
         """query objects"""
-        classes = [State, City]
+        classes = [State, City, User]
         data = []
         tables = {}
         if cls:
