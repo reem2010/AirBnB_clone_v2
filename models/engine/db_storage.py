@@ -8,6 +8,7 @@ from models.user import User
 from models.place import Place
 from models.review import Review
 from models.base_model import Base
+from models.amenity import Amenity
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 
@@ -33,7 +34,7 @@ class DBStorage:
 
     def all(self, cls=None):
         """query objects"""
-        classes = [State, City, User, Place, Review]
+        classes = [State, City, User, Place, Review, Amenity]
         data = []
         tables = {}
         if cls:

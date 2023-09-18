@@ -25,6 +25,8 @@ class BaseModel:
             for key, value in kwargs.items():
                 if key == "__class__":
                     continue
+                if not self.id:
+                    self.id = str(uuid.uuid4())
                 if key == "created_at" or key == "updated_at":
                     if key == "created_at":
                         self.created_at = datetime.strptime(
