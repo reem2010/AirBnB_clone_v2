@@ -4,6 +4,7 @@ from models.base_model import BaseModel, Base
 import models
 from sqlalchemy import Column, Float, ForeignKey, String, Integer, Table
 from sqlalchemy.orm import relationship
+from models.review import Review
 import os
 
 
@@ -45,10 +46,21 @@ class Place(BaseModel, Base):
             """returns the list of Review instances
             with place_id equals to the current Place.id"""
 
-            all_reviews = models.storage.all("Review")
+            all_reviews = models.storage.all(Review)
             result = []
 
             for key, value in all_reviews.items():
                 if value.place_id == self.id:
                     result.append(value)
             return result
+
+        @property
+        def amenities(self):
+            """ returns the list of Amenity instances"""
+            from models.amenity import Amenity
+
+            res = []
+            for value in models.storage.all(Amenity).values():
+                if value.id in self.amenity_ids:
+                    res.append(value)
+            return res
