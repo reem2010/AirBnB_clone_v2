@@ -22,11 +22,11 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
         else:
+            if 'id' not in kwargs.keys():
+                self.id = str(uuid.uuid4())
             for key, value in kwargs.items():
                 if key == "__class__":
                     continue
-                if not self.id:
-                    self.id = str(uuid.uuid4())
                 if key == "created_at" or key == "updated_at":
                     if key == "created_at":
                         self.created_at = datetime.strptime(
