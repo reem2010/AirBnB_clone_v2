@@ -19,7 +19,7 @@ def do_deploy(archive_path):
         run(f"mkdir -p /data/web_static/releases/{file_name}/")
         direct = f"/data/web_static/releases/{file_name}/"
         run(f"tar -xzf /tmp/{archive_path} -C {direct}")
-        run(f"rm /tmp/{archive_path.split("/")[-1]}")
+        run(f"rm /tmp/{archive_path.split('/')[-1]}")
         run("rm -rf /data/web_static/current")
         sym = "/data/web_static/current"
         run("ln -s /data/web_static/releases/{file_name}/ {sym}")
