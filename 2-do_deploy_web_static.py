@@ -10,6 +10,7 @@ env.user = 'ubuntu'
 
 @task
 def do_deploy(archive_path):
+    """distributes an archive to your web servers"""
     if not os.path.exists(archive_path):
         return False
     file_name = archive_path.split()[-1][:-4]
