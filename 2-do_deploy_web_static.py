@@ -5,7 +5,6 @@ import os
 
 
 env.hosts = ['34.205.65.92', '52.205.76.119']
-env.user = 'ubuntu'
 
 
 @task
@@ -18,11 +17,13 @@ def do_deploy(archive_path):
         put(archive_path, '/tmp/')
         run(f"mkdir -p /data/web_static/releases/{file_name}/")
         direct = f"/data/web_static/releases/{file_name}/"
-        run(f"tar -xzf /tmp/{archive_path} -C {direct}")
+        run(f"tar -xzf /tmp/{archive_path.split('/')[-1]} -C {direct}")
         run(f"rm /tmp/{archive_path.split('/')[-1]}")
+        run(f"mv {direct}web_static/* {direct}")
+        run(f"rm -rf {direct}web_static")
         run("rm -rf /data/web_static/current")
         sym = "/data/web_static/current"
-        run("ln -s /data/web_static/releases/{file_name}/ {sym}")
+        run(f"ln -s /data/web_static/releases/{file_name}/ {sym}")
         return True
     except Exception:
         return False
