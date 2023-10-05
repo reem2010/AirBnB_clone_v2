@@ -13,13 +13,13 @@ def do_deploy(archive_path):
     """distributes an archive to your web servers"""
     if not os.path.exists(archive_path):
         return False
-    file_name = archive_path.split()[-1][:-4]
+    file_name = archive_path.split("/")[-1][:-4]
     try:
         put(archive_path, '/tmp/')
         run(f"mkdir -p /data/web_static/releases/{file_name}/")
         direct = f"/data/web_static/releases/{file_name}/"
         run(f"tar -xzf /tmp/{archive_path} -C {direct}")
-        run(f"rm /tmp/{archive_path}")
+        run(f"rm /tmp/{archive_path.split("/")[-1]}")
         run("rm -rf /data/web_static/current")
         sym = "/data/web_static/current"
         run("ln -s /data/web_static/releases/{file_name}/ {sym}")
