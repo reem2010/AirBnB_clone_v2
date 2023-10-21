@@ -22,7 +22,7 @@ def c_lang(text):
     return f"C {text.replace('_', ' ')}"
 
 
-@app.route("/c/<text>")
+@app.route("/python/<text>")
 def py_lang(text="is cool"):
     return f"Python  {text.replace('_', ' ')}"
 
