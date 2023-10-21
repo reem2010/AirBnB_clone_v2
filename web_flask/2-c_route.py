@@ -19,7 +19,7 @@ def hbnb():
 
 @app.route("/c/<text>")
 def c_lang(text):
-    return f"c {text.replace('_', ' ')}"
+    return f"C {text.replace('_', ' ')}"
 
 
 if __name__ == '__main__':
