@@ -28,11 +28,9 @@ def py_lang(text="is cool"):
     return f"Python {text.replace('_', ' ')}"
 
 
-@app.route("/number/<n>")
+@app.route("/number/<int:n>")
 def num(n):
-    if type(n) is int:
-        return f"{n} is  a number"
-    return
+    return f"{n} is  a number"
 
 
 if __name__ == '__main__':
