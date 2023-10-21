@@ -29,7 +29,7 @@ def py_lang(text="is cool"):
 
 
 @app.route("/number/<n>")
-def py_lang(n):
+def num(n):
     if type(n) is int:
         return f"{n} is  a number"
     return
