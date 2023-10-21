@@ -24,7 +24,7 @@ def c_lang(text):
 
 @app.route("/python/<text>")
 def py_lang(text="is cool"):
-    return f"Python  {text.replace('_', ' ')}"
+    return f"Python {text.replace('_', ' ')}"
 
 
 if __name__ == '__main__':
