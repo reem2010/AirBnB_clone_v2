@@ -18,7 +18,7 @@ def hbnb():
 
 
 @app.route("/c/<text>")
-def C(text):
+def c_lang(text):
     return f"c {text.replace('_', ' ')}"
 
 
