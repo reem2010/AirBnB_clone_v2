@@ -16,11 +16,10 @@ def teardown(var):
 
 @app.route("/states")
 @app.route("/states/<id>")
-def states(id=0):
+def states(id=None):
     states = storage.all(State).values()
-    cities = storage.all(City).values()
     file_n = '9-states.html'
-    return render_template(file_n, states=states, cities=cities, id_1=id)
+    return render_template(file_n, states=states, id_1=id)
 
 
 if __name__ == '__main__':
