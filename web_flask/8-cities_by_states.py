@@ -18,7 +18,8 @@ def teardown(var):
 def cities():
     states = storage.all(State)
     cities = storage.all(City)
-    return render_template('8-cities_by_states.html', states=states, cities=cities)
+    file_n = '8-cities_by_states.html'
+    return render_template(file_n, states=states, cities=cities)
 
 
 if __name__ == '__main__':
